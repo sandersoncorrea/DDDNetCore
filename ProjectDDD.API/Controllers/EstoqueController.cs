@@ -2,26 +2,27 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDDD.Application.DTOs;
 using ProjectDDD.Application.Interfaces;
 
 namespace ProjectDDD.API.Controllers
 {
-    [Route("v1/cliente")]
+    [Route("v1/produto")]
     [ApiController]
-    public class ClienteController : Controller
+    public class EstoqueController : Controller
     {
-        private readonly IClienteApplicationService _clienteApp;
-        public ClienteController(IClienteApplicationService clienteApp)
+        private readonly IEstoqueApplicationService _estoqueApp;
+        public EstoqueController(IEstoqueApplicationService estoqueApp)
         {
-            _clienteApp = clienteApp;
+            _estoqueApp = estoqueApp;
         }
-        
+
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
-            return Ok(_clienteApp.GetAll());
+            return Ok(_estoqueApp.GetAll());
         }
 
         [HttpGet("{id}")]
@@ -29,10 +30,10 @@ namespace ProjectDDD.API.Controllers
         {
             try
             {
-                var cliente = _clienteApp.GetById(id);
-                if (cliente == null)
+                var estoque = _estoqueApp.GetById(id);
+                if (estoque == null)
                     return NotFound();
-                return Ok(cliente);
+                return Ok(estoque);
             }
             catch (Exception)
             {
@@ -41,15 +42,15 @@ namespace ProjectDDD.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] ClienteDTO clienteDTO)
+        public ActionResult Post([FromBody] EstoqueDTO estoqueDTO)
         {
             try
             {
-                if (clienteDTO == null)
+                if (estoqueDTO == null)
                     return NotFound();
 
-                _clienteApp.Add(clienteDTO);
-                return Ok("Cliente cadastrado com sucesso");
+                _estoqueApp.Add(estoqueDTO);
+                return Ok("Estoque cadastrado com sucesso");
             }
             catch (Exception ex)
             {
@@ -59,14 +60,14 @@ namespace ProjectDDD.API.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] ClienteDTO clienteDTO)
+        public ActionResult Put([FromBody] EstoqueDTO estoqueDTO)
         {
             try
             {
-                if (clienteDTO == null)
+                if (estoqueDTO == null)
                     return NotFound();
-                _clienteApp.Update(clienteDTO);
-                return Ok("Cliente atualizado com sucesso");
+                _estoqueApp.Update(estoqueDTO);
+                return Ok("Estoque atualizado com sucesso");
             }
             catch (Exception)
             {
@@ -76,12 +77,12 @@ namespace ProjectDDD.API.Controllers
         }
 
         [HttpDelete]
-        public ActionResult Delete([FromBody] ClienteDTO clienteDTO)
+        public ActionResult Delete([FromBody] EstoqueDTO estoqueDTO)
         {
-            if (clienteDTO == null)
+            if (estoqueDTO == null)
                 return NotFound();
-            _clienteApp.Remove(clienteDTO);
-            return Ok("Cliente removido com sucesso");
+            _estoqueApp.Remove(estoqueDTO);
+            return Ok("Estoque removido com sucesso");
         }
     }
 }

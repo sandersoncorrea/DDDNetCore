@@ -14,11 +14,18 @@ namespace ProjectDDD.Infra.CrossCutting.IOC
     {
         public static void Load(ContainerBuilder builder)
         {
-            #region
+            #region Cliente
             builder.RegisterType<ClienteApplicationService>().As<IClienteApplicationService>();
             builder.RegisterType<ClienteService>().As<IClienteService>();
             builder.RegisterType<ClienteRepository>().As<IClienteRepository>();
             builder.RegisterType<ClienteMapper>().As<IClienteMapper>();
+            #endregion
+
+            #region Estoque
+            builder.RegisterType<EstoqueApplicationService>().As<IEstoqueApplicationService>();
+            builder.RegisterType<EstoqueService>().As<IEstoqueService>();
+            builder.RegisterType<EstoqueRepository>().As<IEstoqueRepository>();
+            builder.RegisterType<EstoqueMapper>().As<IEstoqueMapper>();
             #endregion
         }
     }

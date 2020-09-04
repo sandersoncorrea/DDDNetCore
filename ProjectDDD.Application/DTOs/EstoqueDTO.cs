@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace ProjectDDD.Application.DTOs
 {
     public class EstoqueDTO
     {
-        public int? Codigo { get; set; }
+        [Key]
+        public int Codigo { get; set; }
         public string Nome { get; set; }
         public decimal Venda { get; set; }
     }

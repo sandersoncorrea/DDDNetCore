@@ -2,9 +2,7 @@
 using ProjectDDD.Application.Interfaces;
 using ProjectDDD.Application.Mappers.Interfaces;
 using ProjectDDD.Domain.Core.Interfaces.Services;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectDDD.Application
 {

@@ -6,7 +6,7 @@ using System.Text;
 
 namespace ProjectDDD.Domain.Services
 {
-    public class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : class
+    public abstract class ServiceBase<TEntity> : IServiceBase<TEntity> where TEntity : class
     {
         private readonly IRepositoryBase<TEntity> _repository;
         public ServiceBase(IRepositoryBase<TEntity> repository)

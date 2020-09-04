@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ProjectDDD.Infra.Data.Repositorys
 {
-    public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
+    public abstract class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
         private readonly SqlContext _sqlContext;
 

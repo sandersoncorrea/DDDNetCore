@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjectDDD.Domain.Entities
 {
-    public class Base
+    public abstract class Base
     {
         public int Codigo { get; set; }
     }

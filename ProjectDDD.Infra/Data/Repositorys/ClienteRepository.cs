@@ -1,8 +1,5 @@
 ﻿using ProjectDDD.Domain.Core.Interfaces.Repositorys;
 using ProjectDDD.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProjectDDD.Infra.Data.Repositorys
 {

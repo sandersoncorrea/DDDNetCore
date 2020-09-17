@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ProjectDDD.Application.DTOs;
 using ProjectDDD.Application.Interfaces;
@@ -17,6 +18,7 @@ namespace ProjectDDD.API.Controllers
         }
         
         [HttpGet]
+        [Authorize]
         public ActionResult<IEnumerable<string>> Get()
         {
             return Ok(_clienteApp.GetAll());

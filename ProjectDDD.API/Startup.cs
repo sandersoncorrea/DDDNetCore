@@ -29,7 +29,13 @@ namespace ProjectDDD.API
         public void ConfigureServices(IServiceCollection services)
         {
             var connection = Configuration["SqlConnection:SqlConnectionString"];
+            var connectionRedis = Configuration["SqlConnection:ConexaoRedis"];
             services.AddDbContext<SqlContext>(options => options.UseSqlServer(connection));
+            services.AddDistributedRedisCache(options =>
+            {
+                options.Configuration = connectionRedis;
+                options.InstanceName = "DDD-";
+            });
             services.AddControllers();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
             services.AddSwaggerGen(c =>
@@ -38,7 +44,7 @@ namespace ProjectDDD.API
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     In = ParameterLocation.Header,
-                    Description = "Please insert JWT with Bearer into field",
+                    Description = "Por favor, insira JWT com o prefixo Bearer no campo",
                     Name = "Authorization",
                     Type = SecuritySchemeType.ApiKey
                 });
